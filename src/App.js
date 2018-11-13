@@ -9,11 +9,19 @@ class App extends Component {
       {name:'Max',age:28},
       {name:'Manu',age:29},
       {name:'Stephnie',age:26}
-    ]
+    ],
+    otherState:'some other value  '
   }
-  switchNameHandler=()=>{
+  switchNameHandler=(newName)=>{
     //console.log('was clicked');
-    this.state.persons[0].name='maxmillion';
+   // do not do this----- this.state.persons[0].name='maxmillion';
+   this.setState({
+     persons:[
+       {name:newName, age:28},
+       {name:"Manu", age:28},
+       {name:"Stephnie", age:27},
+     ]
+   })
   }
   
   render() {
@@ -27,12 +35,21 @@ class App extends Component {
           <p>
           this is really working
           </p>
-          <button onClick={this.switchNameHandler}>Switch name</button>
-          <Person name={this.state.persons[2].name} age={this.state.persons[2].age} />
-          <Person  name={this.state.persons[1].name} age={this.state.persons[1].age}>
+          <button 
+          onClick={this.switchNameHandler}>
+          Switch name</button>
+          <Person 
+          name={this.state.persons[2].name}
+           age={this.state.persons[2].age} />
+          <Person  
+          name={this.state.persons[1].name} 
+          age={this.state.persons[1].age}
+          click={this.switchNameHandler.bind(this,'Max!!')}>
           my hobby is racing
           </Person>
-          <Person name={this.state.persons[0].name} age={this.state.persons[0].age}
+          <Person 
+          name={this.state.persons[0].name} 
+          age={this.state.persons[0].age}
            click={this.switchNameHandler}
           />
           
