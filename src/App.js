@@ -33,6 +33,12 @@ class App extends Component {
     })
   }
   render() {
+    const style={
+        backgroungColor:'white',
+        font:'inherit',
+        border:'1px solid blue',
+        padding:'8px'
+    };
     return (
       <div className="App">
         
@@ -44,6 +50,7 @@ class App extends Component {
           this is really working
           </p>
           <button 
+          style={style}
           onClick={this.switchNameHandler}>
           Switch name</button>
           <Person 
