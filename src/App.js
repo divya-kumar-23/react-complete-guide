@@ -14,15 +14,17 @@ class App extends Component {
     showPersons:false
   }
   
-  nameChangedHandler=(event)=>{
-    this.setState({
-    persons:[
-      {name:"Max", age:28},
-      {name:event.target.value, age:28},
-      {name:"Stephnie", age:27},
-    ]
-    })
+  nameChangedHandler=(event,id)=>{
+    const personIndex=this.state.persons.findIndex(p=>{
+      return p.id===id
+    });
+    const person={...this.state.persons[personIndex]};
+    person.name=event.target.value;
+    const persons=[...this.state.persons];
+    persons[personIndex]=person;
+    this.setState({persons:persons})
   }
+
   togglePersonsHandler=()=>{
     const doesShow=this.state.showPersons;
     this.setState({showPersons:!doesShow});
@@ -51,6 +53,7 @@ class App extends Component {
               name={persons.name}
               age={persons.age}
               key={persons.id} 
+              changed={(event)=>this.nameChangedHandler(event,persons.id)}
               />
           })
           }
