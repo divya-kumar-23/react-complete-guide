@@ -63,6 +63,13 @@ class App extends Component {
       );
       style.backgroundColor='red';
     }
+    let classes=[];
+    if(this.state.persons.length<=2){
+      classes.push('red');
+    }
+    if(this.state.persons.length<=1){
+      classes.push('bold');
+    }
     return (
       <div className="App">
         
@@ -70,7 +77,7 @@ class App extends Component {
           Hi I m react app
           </p>
           
-          <p>
+          <p className={classes.join(' ')}>
           this is really working
           </p>
           <button 
